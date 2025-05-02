@@ -1,0 +1,51 @@
+.taskName {
+    flex: 1;
+    word-break: break-word;
+    margin: auto 0;
+}
+
+.task {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: 5px;
+    border: 1px solid #939697;
+    background-color: #c5e1e6;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.task input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 16px;
+    margin: auto 0;
+    font-family: "Poppins", sans-serif;
+
+}
+
+.task input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.edit,
+.delete {
+  background-color: #0a2ea4;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+svg{
+    font-size: 16px;
+}
+
