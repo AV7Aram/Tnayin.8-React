@@ -5,11 +5,14 @@ import "./App.css";
 function App() {
   const [task, setTask] = useState("");
   const [todo, setTodo] = useState([]);
+  const [filter, setFilter] = useState("all");
 
   const addTask = (e) => {
     e.preventDefault();
     const trimmed = task.trim();
-    if (!trimmed) return;
+    if (!trimmed) {
+      return
+    }
 
     const newTask = {
       id: Date.now(),
@@ -39,15 +42,26 @@ function App() {
     );
   };
 
+  const filteredTodo = todo.filter((t) => {
+    if (filter === "done") {
+      return t.completed;
+    }
+    if (filter === "notDone") {
+      return !t.completed;
+    }
+    return true;
+  });
+
   return (
     <TodoContainer
       task={task}
       setTask={setTask}
-      todo={todo}
+      todo={filteredTodo}
       onAdd={addTask}
       onDelete={deleteTask}
       onUpdate={updateTask}
       onToggle={toggleCompleted}
+      setFilter={setFilter}
     />
   );
 }

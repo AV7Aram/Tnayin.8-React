@@ -1,9 +1,3 @@
-.taskName {
-    flex: 1;
-    word-break: break-word;
-    margin: auto 0;
-}
-
 .task {
     display: flex;
     flex-wrap: wrap;
@@ -17,35 +11,9 @@
     cursor: pointer;
 }
 
-.task input {
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 16px;
-    margin: auto 0;
-    font-family: "Poppins", sans-serif;
-
-}
-
 .task input[type="checkbox"] {
     width: 20px;
     height: 20px;
     cursor: pointer;
-}
-
-.edit,
-.delete {
-  background-color: #0a2ea4;
-  color: #ffffff;
-  border: none;
-  outline: none;
-  height: 40px;
-  width: 40px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-svg{
-    font-size: 16px;
 }
 

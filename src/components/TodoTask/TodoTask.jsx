@@ -1,22 +1,31 @@
-import { useState } from "react"
-import { FaRegEdit } from "react-icons/fa";
-import { FaRegTrashAlt } from "react-icons/fa";
-import style from './TodoTask.module.css'
+import { useState } from "react";
+import { TaskText } from "../TaskText/TaskText";
+import { TaskActions } from "../TaskActions/TaskActions";
+import style from "./TodoTask.module.css";
 
 export function TodoTask({ task, onDelete, onUpdate, onToggle }) {
-    const [editing, setEditing] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
     const [editText, setEditText] = useState(task.task);
 
     const handleEdit = () => {
-        setEditing(true);
+        if (isEditing) {
+            onUpdate(task.id, editText);
+        }
+        setIsEditing(!isEditing);
     };
 
     const handleBlurOrEnter = (e) => {
         if (e.type === "blur" || (e.key === "Enter" && editText.trim())) {
             onUpdate(task.id, editText);
-            setEditing(false);
+            setIsEditing(false);
         }
-        if (e.key === "Enter") e.preventDefault();
+        if (e.key === "Enter") {
+            e.preventDefault();
+        }
+    };
+
+    const handleDoubleClick = () => {
+        setIsEditing(true);
     };
 
     return (
@@ -29,24 +38,19 @@ export function TodoTask({ task, onDelete, onUpdate, onToggle }) {
                 checked={task.completed}
                 onChange={onToggle}
             />
-            {editing ? (
-                <input
-                    type="text"
-                    value={editText}
-                    onChange={(e) => setEditText(e.target.value)}
-                    onBlur={handleBlurOrEnter}
-                    onKeyDown={handleBlurOrEnter}
-                    style={{ flexGrow: 1 }}
-                />
-            ) : (
-                <span className={style.taskName}>{task.task}</span>
-            )}
-            <button className={style.edit} onClick={handleEdit}>
-                <FaRegEdit />
-            </button>
-            <button className={style.delete} onClick={onDelete}>
-                <FaRegTrashAlt />
-            </button>
+            <TaskText
+                task={task}
+                isEditing={isEditing}
+                editText={editText}
+                setEditText={setEditText}
+                onBlurOrEnter={handleBlurOrEnter}
+                onDoubleClick={handleDoubleClick}
+            />
+            <TaskActions
+                isEditing={isEditing}
+                onEdit={handleEdit}
+                onDelete={onDelete}
+            />
         </div>
     );
 }

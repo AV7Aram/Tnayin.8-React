@@ -1,5 +1,5 @@
+import { TodoTask } from '../TodoTask/TodoTask'
 import style from './TodoList.module.css'
-import { TodoTask } from '../TodoTask/TodoTask';
 
 export function TodoList({ todo, onDelete, onUpdate, onToggle }) {
     return (

@@ -10,11 +10,12 @@ export function TodoContainer({
     onDelete,
     onUpdate,
     onToggle,
+    setFilter,
 }) {
     return (
         <div className={style.container}>
             <div className={style.wrapper}>
-                <TodoForm task={task} setTask={setTask} onAdd={onAdd} />
+                <TodoForm task={task} setTask={setTask} onAdd={onAdd} setFilter={setFilter} />
                 <TodoList
                     todo={todo}
                     onDelete={onDelete}
